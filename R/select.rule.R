@@ -8,10 +8,14 @@ function (x, type = 0, epsilon = 1, thresh = 1)
     }
     if (type == 1) {
         max.pos <- which.max(x)
-        z[-as.numeric(max.pos)] <- -Inf
         select <- rep(0, times = length(x))
-        select[as.numeric(max.pos)] <- 1
-    }
+        if(x[max.pos] >= thresh){
+            z[-as.numeric(max.pos)] <- -Inf
+            select[as.numeric(max.pos)] <- 1
+        }else{
+            z[1:length(x)] <- -Inf
+        }
+    } 
     if (type == 2) {
         max.pos1 <- which.max(x)
         x[as.numeric(max.pos1)] <- -Inf
