@@ -47,7 +47,8 @@ report.1 <- function(ss1,ss2,n,ran.seed,rule,epsilon,thresh,method,t.level,ofile
  cat("selection rule:",rule,sep=" ",file=ofile,append=TRUE)
  if(rule=="epsilon rule (select within epsilon of maximum)"){
    cat(" : epsilon =",round(epsilon,3),"\n",file=ofile,append=TRUE)
-  } else if(rule %in% c("threshold rule (select greater than or equal to threshold)", "select one with threshold rule")){
+  } else if(rule %in% c("threshold rule (select greater than or equal to threshold)",
+  "select one with threshold rule","select second best with threshold rule")){
    cat(" : threshold =",round(thresh,3),"\n",file=ofile,append=TRUE)
   } else {
    cat("\n",file=ofile,append=TRUE)
@@ -144,16 +145,17 @@ ptest.check <- sum(is.element(ptest,seq(1:(length(effect$early)-1))))
 if (ptest.check < length(ptest)) {
     stop("invalid ptest vector (see help)")
 }
-opt.select <- 0:8
+opt.select <- 0:9
 e.select <- as.integer(match(select,opt.select,-1))
 if (e.select < 1) {
-   stop("selection rule: integer between 0 and 8 (see help)")
+   stop("selection rule: integer between 0 and 9 (see help)")
 }
 selection.rules <- c("select all treatments","select one","select two",
            "select three","epsilon rule (select within epsilon of maximum)",
            "randomly select a single treatment",
            "threshold rule (select greater than or equal to threshold)",
-           "select one with threshold rule","select second best")
+           "select one with threshold rule","select second best",
+           "select second best with threshold rule")
 meth.options <- c("invnorm", "fisher")
     imeth <- as.integer(match(method, meth.options, -1))
     if (imeth < 1) {
