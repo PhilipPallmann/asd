@@ -48,8 +48,8 @@ function (z1 = c(0, 0, 0), z2 = c(0, 0, 0), zearly = c(0, 0,
         stop("Maximum of 10,000,000 simulations allowed")
     }
     select <- abs(as.integer(select))
-    if (select > 6) {
-        stop("Selection rule options: 0,1,2,3,4,5,6")
+    if (select > 8) {
+        stop("Selection rule options: 0,1,2,3,4,5,6,7,8")
     }
     if (level >= 1 | level <= 0) {
         stop("Level must be between 0 and 1")
