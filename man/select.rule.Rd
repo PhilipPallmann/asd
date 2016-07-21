@@ -14,13 +14,13 @@ select.rule(x, type = 0, epsilon = 1, thresh = 1)
 Vector of test statistics.
 }
   \item{type}{
-Decision rule type; 0, 1, 2, 3, 4, 5 or 6 (see below for details); default is 0.
+Decision rule type; 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9 (see below for details); default is 0.
 }
   \item{epsilon}{
 For \code{type} = 4, set epsilon criterion
 }
   \item{thresh}{
-For \code{type} = 6, set threshold criterion
+For \code{type} = 6, 7, or 9, set threshold criterion
 }
 }
 \details{
@@ -32,6 +32,9 @@ There are seven types of selction rule available:\cr
 (4) Epsilon rule; select all \code{x} within \code{epsilon} of maximum\cr
 (5) Randomly select one treatment\cr
 (6) Threshold rule; select all \code{x} larger than \code{thresh}\cr
+(7) Select one treatment with threshold rule; largest value of \code{x} if and only if \code{x} larger than \code{thresh}\cr
+(8) Select one treatment; second largest value of \code{x}\cr
+(9) Select one treatment with threshold rule; second largest value of \code{x} if and only if \code{x} larger than \code{thresh}\cr
 }
 \value{
  \item{select}{Indicator vector that shows treatments selected (1) or not selected (0)}
