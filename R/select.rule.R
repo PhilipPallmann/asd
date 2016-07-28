@@ -33,7 +33,7 @@ function (x, type = 0, epsilon = 1, thresh = 1)
     }
     if (type == 4) {
         max.ind <- max(x) - epsilon
-        max.pos <- which(x >= max.ind, arr.ind = TRUE)
+        max.pos <- which(x >= max.ind - 0.00001, arr.ind = TRUE) # added - 0.00001
         z[-as.numeric(max.pos)] <- -Inf
         select <- rep(0, times = length(x))
         select[as.numeric(max.pos)] <- 1
@@ -46,14 +46,13 @@ function (x, type = 0, epsilon = 1, thresh = 1)
     }
     if (type == 6) {
         max.pos <- which(x >= thresh, arr.ind = TRUE)
-        if (sum(max.pos) == 0) {
+        if(sum(max.pos) == 0){
             z[c(1:length(x))] <- -Inf
-        }
-        else {
+        }else{
             z[-as.numeric(max.pos)] <- -Inf
         }
         select <- rep(0, times = length(x))
-        if (sum(max.pos) > 0) {
+        if(sum(max.pos) > 0){
             select[as.numeric(max.pos)] <- 1
         }
     }
@@ -82,6 +81,13 @@ function (x, type = 0, epsilon = 1, thresh = 1)
         }else{
             z[1:length(x)] <- -Inf
         }
+    }
+    if (type == 10) {
+        max.ind <- max(x) - epsilon
+        max.pos <- which(x >= max.ind - 0.00001 & x >= thresh, arr.ind = TRUE) # added - 0.00001
+        select <- rep(0, times = length(x))
+        z[-as.numeric(max.pos)] <- -Inf
+        select[as.numeric(max.pos)] <- 1
     }
     list(select = select, z = z)
 }
