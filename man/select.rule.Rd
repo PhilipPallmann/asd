@@ -14,13 +14,13 @@ select.rule(x, type = 0, epsilon = 1, thresh = 1)
 Vector of test statistics.
 }
   \item{type}{
-Decision rule type; 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9 (see below for details); default is 0.
+Decision rule type; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10 (see below for details); default is 0.
 }
   \item{epsilon}{
-For \code{type} = 4, set epsilon criterion
+For \code{type} = 4 or 10, set epsilon criterion
 }
   \item{thresh}{
-For \code{type} = 6, 7, or 9, set threshold criterion
+For \code{type} = 6, 7, 9, or 10, set threshold criterion
 }
 }
 \details{
@@ -36,6 +36,7 @@ There are seven types of selction rule available:\cr
 (8) Select one treatment; second largest value of \code{x}\cr
 (9) Select one treatment with threshold rule; second largest value of \code{x} if and only if \code{x} larger than \code{thresh}\cr
 }
+(10) Select all \code{x} within \code{epsilon} of maximum if and only if \code{x} larger than \code{thresh}\cr
 \value{
  \item{select}{Indicator vector that shows treatments selected (1) or not selected (0)}
  \item{z}{Vector of same length as \code{select} set to -Inf if not selected and 0 otherwise. For use with function \code{dunnett.test}}
