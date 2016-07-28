@@ -35,8 +35,8 @@ There are seven types of selction rule available:\cr
 (7) Select one treatment with threshold rule; largest value of \code{x} if and only if \code{x} larger than \code{thresh}\cr
 (8) Select one treatment; second largest value of \code{x}\cr
 (9) Select one treatment with threshold rule; second largest value of \code{x} if and only if \code{x} larger than \code{thresh}\cr
-}
 (10) Select all \code{x} within \code{epsilon} of maximum if and only if \code{x} larger than \code{thresh}\cr
+}
 \value{
  \item{select}{Indicator vector that shows treatments selected (1) or not selected (0)}
  \item{z}{Vector of same length as \code{select} set to -Inf if not selected and 0 otherwise. For use with function \code{dunnett.test}}
